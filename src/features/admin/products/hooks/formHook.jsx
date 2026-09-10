@@ -4,7 +4,7 @@ import {toast} from 'react-toastify';
 import {createProductApi} from '../api/createProduct';
 import {deleteProductApi} from '../api/deleteProduct';
 import {editProductApi} from '../api/editProduct';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useParams, useLocation} from 'react-router';
 
 export const useProductForm = () => {
@@ -64,13 +64,14 @@ export const useProductForm = () => {
 };
 
 export const useProductCard = () => {
+  const [reload, setReload] = useState (false);
   const navigate = useNavigate ();
   const onDelete = async id => {
     let res = confirm ('are you sure want to delete this?');
     if (res) {
       await deleteProductApi (id);
       toast.warn ('Product Deleted');
-      navigate ('/main');
+      setReload (false);
     } else {
       return;
     }
