@@ -13,7 +13,7 @@ const AppRoutes = () => {
       element: <AuthLayout />,
     },
     {
-      path: '/main',
+      path: 'main',
       element: <MainAdminLayout />,
       children: [
         {

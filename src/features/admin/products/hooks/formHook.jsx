@@ -12,7 +12,7 @@ export const useProductForm = () => {
   const location = useLocation ();
   const navigate = useNavigate ();
   const editing = Boolean (id);
-  const editProduct = location.state.product;
+  const editProduct = location.state?.product;
 
   const {
     register,
