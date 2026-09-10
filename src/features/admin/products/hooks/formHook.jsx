@@ -71,7 +71,7 @@ export const useProductCard = () => {
     if (res) {
       await deleteProductApi (id);
       toast.warn ('Product Deleted');
-      setReload (false);
+      setReload (!reload);
     } else {
       return;
     }
