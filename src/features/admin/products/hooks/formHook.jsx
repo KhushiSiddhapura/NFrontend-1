@@ -66,9 +66,14 @@ export const useProductForm = () => {
 export const useProductCard = () => {
   const navigate = useNavigate ();
   const onDelete = async id => {
-    await deleteProductApi (id);
-    toast.warn ('Product Deleted');
-    navigate ('/main');
+    let res = confirm ('are you sure want to delete this?');
+    if (res) {
+      await deleteProductApi (id);
+      toast.warn ('Product Deleted');
+      navigate ('/main');
+    } else {
+      return;
+    }
   };
 
   const onEdit = async (id, updatedData) => {
